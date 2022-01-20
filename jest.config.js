@@ -3,9 +3,13 @@
  * https://jestjs.io/docs/configuration
  */
 
-export default {
+module.exports = {
   roots: ['<rootDir>/src'],
   collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+  coveragePathIgnorePatterns: [
+    '<rootDir>/src/presentation/protocols/index.ts',
+    '.+\\protocols.ts$'
+  ],
   coverageDirectory: 'coverage',
   testEnvironment: 'node',
   transform: {
