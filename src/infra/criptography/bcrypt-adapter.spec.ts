@@ -22,6 +22,17 @@ describe('Bcrypt Adapter', () => {
     expect(hashSpy).toHaveBeenCalledWith('any_value', salt)
   })
 
+  test('Should throw if bcrypt throws', async () => {
+    const SUT = makeSUT()
+    jest.spyOn(bcrypt, 'hash').mockReturnValueOnce(
+      // @ts-expect-error: Unreachable code error
+      new Promise((resolve, reject) => reject(new Error()))
+    )
+
+    const promise = SUT.encrypt('any_value')
+    await expect(promise).rejects.toThrow()
+  })
+
   test('Should return a hash on success', async () => {
     const SUT = makeSUT()
 
