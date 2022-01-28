@@ -5,7 +5,10 @@
 
 module.exports = {
   roots: ['<rootDir>/src'],
-  collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.ts',
+    '!<rootDir>/src/main/**',
+  ],
   coveragePathIgnorePatterns: [
     '<rootDir>/src/presentation/protocols/index.ts',
     '.+\\protocols.ts$'
