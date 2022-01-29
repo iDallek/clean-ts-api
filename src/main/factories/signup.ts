@@ -13,5 +13,6 @@ export const makeSignUpController = (): Controller => {
   const accountMongoRepository = new AccountMongoRepository()
   const dbAddAccount = new DbAddAccount(bcryptAdapter, accountMongoRepository)
   const signUpController = new SignUpController(emailValidatorAdapter, dbAddAccount)
+  // @ts-expect-error: Unreachable code error
   return new LogControllerDecorator(signUpController)
 }
